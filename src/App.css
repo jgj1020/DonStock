@@ -6,7 +6,19 @@
 
 body {
   font-family: sans-serif;
-  background: radial-gradient(circle at top, #182338, #090d18);
+  min-height: 100vh;
+
+  background: linear-gradient(
+    -45deg,
+    #182338,
+    #090d18,
+    #1b2747,
+    #0d1220
+  );
+
+  background-size: 400% 400%;
+
+  animation: gradientMove 15s ease infinite;
 }
 
 .container {
@@ -22,12 +34,15 @@ body {
 }
 
 /* 로고 */
+
 .logo-area {
   margin-bottom: 30px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation: logoFloat 4s ease-in-out infinite;
 }
 
 .logo {
@@ -40,6 +55,7 @@ body {
 }
 
 /* 로그인 카드 */
+
 .login-card {
   width: 100%;
   max-width: 450px;
@@ -55,6 +71,8 @@ body {
   backdrop-filter: blur(20px);
 
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+  animation: fadeUp 0.8s ease;
 }
 
 .title {
@@ -79,6 +97,7 @@ body {
 }
 
 /* 입력창 */
+
 .input-group {
   margin-bottom: 22px;
 }
@@ -111,13 +130,24 @@ body {
   padding: 0 20px;
 
   outline: none;
+
+  transition: all 0.3s ease;
 }
 
 .input-group input::placeholder {
   color: #777;
 }
 
+.input-group input:focus {
+  border-color: #b48cff;
+
+  box-shadow: 0 0 20px rgba(180, 140, 255, 0.3);
+
+  transform: scale(1.02);
+}
+
 /* 버튼 */
+
 .login-btn {
   width: 100%;
 
@@ -143,14 +173,17 @@ body {
 
   margin-top: 10px;
 
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-  opacity: 0.9;
+  transform: translateY(-4px) scale(1.02);
+
+  box-shadow: 0 12px 30px rgba(180, 140, 255, 0.4);
 }
 
 /* 회원가입 */
+
 .signup {
   text-align: center;
 
@@ -165,9 +198,16 @@ body {
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.signup span:hover {
+  color: #b48cff;
 }
 
 /* 하단 */
+
 .footer {
   margin-top: 40px;
 
@@ -183,6 +223,7 @@ body {
 }
 
 /* 손 흔들기 */
+
 .wave {
   display: inline-block;
 
@@ -190,6 +231,8 @@ body {
 
   transform-origin: 70% 70%;
 }
+
+/* 애니메이션 */
 
 @keyframes wave {
   0% {
@@ -217,34 +260,66 @@ body {
   }
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* 태블릿 */
+
 @media (max-width: 768px) {
   .login-card {
     padding: 30px 24px;
-
-    border-radius: 24px;
   }
 
   .title {
     font-size: 26px;
   }
 
-  .sub-text {
-    font-size: 14px;
-  }
-
   .logo {
     max-width: 240px;
-  }
-
-  .login-btn {
-    height: 58px;
-
-    font-size: 17px;
   }
 }
 
 /* 모바일 */
+
 @media (max-width: 480px) {
   .container {
     padding: 16px;
@@ -255,8 +330,6 @@ body {
   }
 
   .login-card {
-    width: 100%;
-
     padding: 25px 20px;
 
     border-radius: 20px;
@@ -264,18 +337,10 @@ body {
 
   .title {
     font-size: 22px;
-
-    gap: 6px;
   }
 
   .sub-text {
     font-size: 13px;
-
-    margin-bottom: 25px;
-  }
-
-  .input-group label {
-    font-size: 14px;
   }
 
   .input-group input {
@@ -290,13 +355,7 @@ body {
     font-size: 16px;
   }
 
-  .signup {
-    font-size: 14px;
-  }
-
   .footer {
-    margin-top: 30px;
-
     font-size: 12px;
   }
 }

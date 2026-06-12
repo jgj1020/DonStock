@@ -1,6 +1,10 @@
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
+import SignUp from "./pages/SignUp";
 
-function App() {
+function LoginPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       {/* 로고 */}
@@ -43,8 +47,15 @@ function App() {
           시작하기 (로그인)
         </button>
 
+        {/* 회원가입 클릭 시 /signup 으로 이동 */}
         <div className="signup">
-          처음이신가요? <span>회원가입하기</span>
+          처음이신가요?{" "}
+          <span
+            onClick={() => navigate("/signup")}
+            style={{ cursor: "pointer" }}
+          >
+            회원가입하기
+          </span>
         </div>
       </div>
 
@@ -52,6 +63,15 @@ function App() {
         Developer: <span>KJun</span> | Email: s2433@e-mirim.hs.kr
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/"        element={<LoginPage />} />
+      <Route path="/signup"  element={<SignUp />} />
+    </Routes>
   );
 }
 
