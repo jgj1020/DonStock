@@ -109,13 +109,12 @@ function Field({
 
         <input
           id={id}
-          className={`field-input ${
-            isError
-              ? "error"
-              : isOk
+          className={`field-input ${isError
+            ? "error"
+            : isOk
               ? "ok"
               : ""
-          }`}
+            }`}
           type={
             showToggle
               ? show
@@ -200,7 +199,7 @@ function StrengthBar({
     "#3b82f6",
     "#22c55e",
   ];
-    return (
+  return (
     <div className="strength-wrap">
 
       <div className="strength-bars">
@@ -294,6 +293,16 @@ export default function SignUp() {
       JSON.stringify(users)
     );
 
+    // 현재 사용자 저장
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify({
+        id,
+        nickname,
+        pw,
+      })
+    );
+
     setDone(true);
 
   }, [allOk, id, pw, nickname]);
@@ -343,7 +352,7 @@ export default function SignUp() {
   // ───────── 회원가입 화면 ─────────
 
   return (
-        <div className="signup-page">
+    <div className="signup-page">
 
       {/* 배경 원 */}
       <div className="bg-circle bg-circle1"></div>
@@ -469,11 +478,10 @@ export default function SignUp() {
           />
 
           <button
-            className={`signup-button ${
-              allOk
-                ? "active"
-                : "inactive"
-            }`}
+            className={`signup-button ${allOk
+              ? "active"
+              : "inactive"
+              }`}
             onClick={handleSubmit}
           >
             가입하기

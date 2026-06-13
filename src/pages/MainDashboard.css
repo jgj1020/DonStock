@@ -1,0 +1,278 @@
+/* 전체 */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.dashboard{
+    min-height:100vh;
+    background:linear-gradient(
+        180deg,
+        #0f172a,
+        #1e293b
+    );
+    padding:25px;
+    padding-bottom:120px;
+    overflow:hidden;
+    position:relative;
+}
+
+
+/* 떠다니는 주식 */
+
+.floating-stock{
+    position:absolute;
+    color:rgba(255,255,255,.1);
+    font-size:20px;
+    font-weight:700;
+    animation:float 10s linear infinite;
+    pointer-events:none;
+}
+
+.stock1{
+    top:10%;
+    left:-200px;
+}
+
+.stock2{
+    top:40%;
+    left:-250px;
+    animation-delay:2s;
+}
+
+.stock3{
+    top:70%;
+    left:-180px;
+    animation-delay:5s;
+}
+
+@keyframes float{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(1600px);
+    }
+}
+
+
+/* 상단 */
+
+.top-bar{
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:30px;
+
+    padding:20px 25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.dashboard-logo{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+}
+
+.logo-section h1{
+    color:white;
+    font-size:34px;
+    margin-bottom:5px;
+}
+
+.logo-section p{
+    color:#cbd5e1;
+}
+
+.profile-btn{
+    background:#4f7cff;
+    border:none;
+    color:white;
+    padding:14px 24px;
+    border-radius:18px;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.profile-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* 카드 */
+
+.card-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(280px,1fr)
+    );
+
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#94a3b8;
+    margin-bottom:20px;
+}
+
+.card h1{
+    color:white;
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+
+/* 상승 하락 */
+
+.up{
+    color:#22c55e;
+}
+
+.down{
+    color:#ef4444;
+}
+
+
+/* 관심 종목 */
+
+.stock-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+
+    color:white;
+
+    background:rgba(255,255,255,.05);
+
+    padding:15px;
+
+    border-radius:15px;
+}
+
+
+/* 투자 한마디 */
+
+.quote{
+    font-size:18px;
+    color:white;
+}
+
+
+/* 하단 메뉴 */
+
+.bottom-nav{
+    position:fixed;
+
+    bottom:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+    max-width:700px;
+
+    background:rgba(255,255,255,.1);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:30px;
+
+    display:flex;
+    justify-content:space-around;
+
+    padding:20px;
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    color:#94a3b8;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.nav-item:hover{
+    transform:translateY(-4px);
+}
+
+.nav-item.active{
+    color:white;
+}
+
+.nav-item span{
+    font-size:13px;
+}
+
+
+/* 반응형 */
+
+@media(max-width:768px){
+
+    .top-bar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .logo-section{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .dashboard-logo{
+        width:75px;
+        height:75px;
+    }
+
+    .card h1{
+        font-size:32px;
+    }
+
+}
